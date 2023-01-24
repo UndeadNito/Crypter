@@ -25,7 +25,7 @@ namespace crypt
 
             List<byte[]> files = new List<byte[]>();
 
-            foreach (string file in Directory.EnumerateFiles(cryptFrom, filePattern, SearchOption.AllDirectories))
+            foreach (string file in Directory.EnumerateFiles(cryptFrom, "*.encrypted", SearchOption.AllDirectories))
             {
                 files.Add(File.ReadAllBytes(file));
             }
