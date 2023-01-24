@@ -29,6 +29,8 @@ namespace crypt
             {
                 files.Add(File.ReadAllBytes(file));
             }
+
+            Console.ReadLine();
         }
     }
 }
